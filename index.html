@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DefendX AI | Autonomous SOC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">DEFENDX AI</div>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="live-indicator"></div>
+                <span style="font-size: 12px; color: var(--text-dim);">SYSTEM LIVE</span>
+            </div>
+            <div id="clock" style="font-family: 'JetBrains Mono'; font-size: 14px; color: var(--primary-cyan);">14:15:32 UTC</div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Panel: Live Log Ingestion -->
+        <div class="panel">
+            <div class="panel-header">
+                <span><i data-lucide="activity" style="width: 14px; margin-right: 8px;"></i>Unified Event Stream</span>
+                <span id="eps-counter" style="color: var(--primary-cyan);">520 EPS</span>
+            </div>
+            <div class="event-list" id="event-stream">
+                <!-- Events will be injected here -->
+            </div>
+        </div>
+
+        <!-- Center Panel: AI vs AI Visualization -->
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="panel" style="flex: 2; position: relative; display: flex; align-items: center; justify-content: center;">
+                <div class="panel-header" style="position: absolute; top: 0; left: 0; width: 100%;">
+                    <span><i data-lucide="shield-alert" style="width: 14px; margin-right: 8px;"></i>Agent Battleground (Red vs Blue)</span>
+                </div>
+                <canvas id="threat-chart" style="max-height: 80%; width: 90%;"></canvas>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; flex: 1;">
+                <div class="panel">
+                    <div class="panel-header">Agent Health</div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-label">RED AI (ATTACKER)</div>
+                            <div class="stat-value">LVL 4</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">BLUE AI (DEFENDER)</div>
+                            <div class="stat-value">98.2%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="panel-header">Shadow AI Learning</div>
+                    <div style="padding: 20px;">
+                        <div style="height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; margin-bottom: 10px;">
+                            <div id="learning-progress" style="width: 65%; height: 100%; background: var(--primary-cyan); border-radius: 5px;"></div>
+                        </div>
+                        <div style="font-size: 11px; color: var(--text-dim);">Model Adaptation: <span style="color: var(--text-main);">65% Complete</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Critical Alerts & Intelligence -->
+        <div class="panel">
+            <div class="panel-header">
+                <span><i data-lucide="zap" style="width: 14px; margin-right: 8px;"></i>Critical Intelligence</span>
+            </div>
+            <div class="alert-feed" id="alert-feed">
+                <!-- Alerts will be injected here -->
+            </div>
+            <div class="panel" style="margin: 10px; flex: initial; background: rgba(0, 242, 255, 0.05); border: 1px solid var(--primary-cyan);">
+                <div class="panel-header" style="border: none; padding-bottom: 5px;">Shadow AI Insight</div>
+                <p id="shadow-insight" style="padding: 0 15px 15px 15px; font-size: 12px; line-height: 1.4; color: var(--primary-cyan);">
+                    Detected evolving lateral movement pattern. Automatically adjusted endpoint heuristic sensitivity (+15%).
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
